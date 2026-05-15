@@ -1,0 +1,16 @@
+http:
+  routers:
+    grafana:
+      entryPoints:
+        - websecure
+      rule: "Host(`grafana.ironwolf65.duckdns.org`)"
+      service: grafana
+      middlewares:
+        - mid-default-headers
+        - mid-https-redirect
+  services:
+    grafana:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.88.15:3000"
+        passHostHeader: true

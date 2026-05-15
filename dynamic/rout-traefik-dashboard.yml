@@ -1,0 +1,21 @@
+http:
+  routers:
+    dashboard:
+      entryPoints:
+        - websecure
+      rule: Host(`traefik.ironwolf65.duckdns.org`) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))
+      service: api@internal
+      middlewares:
+        - mid-authentik
+      priority: 10
+    default-router-auth:
+      rule: "Host(`traefik.ironwolf65.duckdns.org`) && PathPrefix(`/outpost.goauthentik.io/`)"
+      priority: 15
+      service: authentik
+  
+  services:
+    dashboard:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.88.9:8080"
+        passHostHeader: true

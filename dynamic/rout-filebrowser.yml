@@ -1,0 +1,16 @@
+http:
+  routers:
+    filebrowser:
+      entryPoints:
+        - websecure
+      rule: "Host(`fb.ironwolf65.duckdns.org`)"
+      service: filebrowser
+      middlewares:
+        - mid-default-headers
+        - mid-https-redirect
+  services:
+    filebrowser:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.88.2:8080"
+        passHostHeader: true

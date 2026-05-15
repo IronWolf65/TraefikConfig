@@ -1,0 +1,20 @@
+services:
+  traefik:
+    image: traefik:latest
+    container_name: traefik
+    restart: unless-stopped
+    env_file: .env
+    command:
+      - "--certificatesresolvers.letsencrypt.acme.email=${EMAIL}"
+    ports:
+      - "80:80"
+      - "443:443"
+      # - "8080:8080"
+    volumes:
+      - "./traefik.yml:/etc/traefik/traefik.yml:ro"
+      - type: bind
+        source: ./acme.json
+        target: /etc/traefik/acme.json
+      - "./dynamic:/etc/traefik/dynamic:ro"
+      - "./log:/var/log/traefik"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"

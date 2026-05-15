@@ -1,0 +1,76 @@
+global:
+  checkNewVersion: true
+  sendAnonymousUsage: false
+
+api:
+  dashboard: true
+  disableDashboardAd: true
+entryPoints:
+  web:
+    address: ":80"
+    http:
+      redirections:
+        entryPoint:
+          to: websecure
+          scheme: https
+  websecure:
+    address: ":443"
+    asDefault: true
+    transport:                #this fix upload video for immich   
+      respondingTimeouts:     #this fix upload video for immich   
+        readTimeout: 600s     #this fix upload video for immich   
+        idleTimeout: 600s     #this fix upload video for immich   
+    http:
+      tls:
+        certResolver: letsencrypt
+        domains:
+          - main: "ironwolf65.duckdns.org"
+            sans:
+              - "*.ironwolf65.duckdns.org"
+        # options: strict_tls@file
+#   metrics:
+#     address: ":8082"
+
+# metrics:
+#   prometheus:
+#     entryPoint: metrics
+
+serversTransport:
+    insecureSkipVerify: true
+
+providers:
+  docker:
+    endpoint: "unix:///var/run/docker.sock"
+    exposedByDefault: false
+  file:
+    directory: /etc/traefik/dynamic
+    watch: true
+
+certificatesResolvers:
+  letsencrypt:
+    acme:
+      caServer: https://acme-v02.api.letsencrypt.org/directory
+      # caServer: https://acme-staging-v02.api.letsencrypt.org/directory
+      storage: /etc/traefik/acme.json
+      dnsChallenge:
+        provider: duckdns
+        delayBeforeCheck: 30
+        resolvers:
+          - "1.1.1.1:53"
+          - "1.0.0.1:53"
+          - "8.8.8.8:53"
+          - "9.9.9.9:53"
+
+log:
+    level: "INFO"
+    filePath: "/var/log/traefik/traefik.log"
+    noColor: false
+    maxSize: 100
+    compress: true
+
+accessLog:
+    addInternals: true
+    filePath: "/var/log/traefik/access.log"
+    bufferingSize: 100
+
+

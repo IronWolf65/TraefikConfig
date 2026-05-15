@@ -1,0 +1,16 @@
+http:
+  routers:
+    authentik:
+      entryPoints:
+        - websecure
+      rule: "Host(`auth.ironwolf65.duckdns.org`)"
+      service: authentik
+      middlewares:
+        - mid-default-headers
+        - mid-https-redirect
+  services:
+    authentik:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.88.4:9000/outpost.goauthentik.io"
+        passHostHeader: true
