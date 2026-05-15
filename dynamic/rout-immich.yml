@@ -1,0 +1,16 @@
+http:
+  routers:
+    immich:
+      entryPoints:
+        - websecure
+      rule: "Host(`immich.ironwolf65.duckdns.org`)"
+      service: immich
+      middlewares:
+        - mid-default-headers
+        - mid-https-redirect
+  services:
+    immich:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.88.14:2283"
+        passHostHeader: true

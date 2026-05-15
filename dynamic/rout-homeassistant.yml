@@ -1,0 +1,16 @@
+http:
+  routers:
+    homeassistant:
+      entryPoints:
+        - websecure
+      rule: "Host(`ha.ironwolf65.duckdns.org`)"
+      service: homeassistant
+      middlewares:
+        - mid-default-headers
+        - mid-https-redirect
+  services:
+    homeassistant:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.88.10:8123"
+        passHostHeader: true
