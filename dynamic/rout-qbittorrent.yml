@@ -1,0 +1,16 @@
+http:
+  routers:
+    qbittorrent:
+      entryPoints:
+        - websecure
+      rule: "Host(`qbittorrent.ironwolf65.duckdns.org`)"
+      service: qbittorrent
+      middlewares:
+        - mid-default-headers
+        - mid-https-redirect
+  services:
+    qbittorrent:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.88.17:8090"
+        passHostHeader: true
