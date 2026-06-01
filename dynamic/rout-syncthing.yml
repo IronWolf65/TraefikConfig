@@ -1,0 +1,16 @@
+http:
+  routers:
+    syncthing:
+      entryPoints:
+        - websecure
+      rule: "Host(`syncthing.ironwolf65.duckdns.org`)"
+      service: syncthing
+      middlewares:
+        - mid-default-headers
+        - mid-https-redirect
+  services:
+    syncthing:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.88.18:8384"
+        passHostHeader: true
