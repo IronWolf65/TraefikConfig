@@ -1,0 +1,16 @@
+http:
+  routers:
+    ntfy:
+      entryPoints:
+        - websecure
+      rule: "Host(`ntfy.ironwolf65.duckdns.org`)"
+      service: ntfy
+      middlewares:
+        - mid-default-headers
+        - mid-https-redirect
+  services:
+    ntfy:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.88.13:80"
+        passHostHeader: true
