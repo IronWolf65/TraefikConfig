@@ -8,10 +8,10 @@ http:
       middlewares:
         - mid-authentik
       priority: 10
-    default-router-auth:
-      rule: "Host(`traefik.ironwolf65.duckdns.org`) && PathPrefix(`/outpost.goauthentik.io/`)"
-      priority: 15
-      service: authentik
+    # default-router-auth:
+    #   rule: "Host(`traefik.ironwolf65.duckdns.org`) && PathPrefix(`/outpost.goauthentik.io/`)"
+    #   priority: 15
+    #   service: authentik
   
   services:
     dashboard:
