@@ -17,4 +17,3 @@ services:
         target: /etc/traefik/acme.json
       - "./dynamic:/etc/traefik/dynamic:ro"
       - "./log:/var/log/traefik"
-      - "/var/run/docker.sock:/var/run/docker.sock:ro"
