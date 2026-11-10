@@ -11,6 +11,7 @@ http:
   services:
     syncthing:
       loadBalancer:
+        serversTransport: insecure
         servers:
           - url: "https://192.168.88.18:8384"
         passHostHeader: true
