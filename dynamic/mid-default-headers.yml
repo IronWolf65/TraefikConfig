@@ -4,6 +4,5 @@ http:
       headers:
         contentTypeNosniff: true
         stsIncludeSubdomains: true
-        stsPreload: true
         stsSeconds: 31536000
         customFrameOptionsValue: SAMEORIGIN
