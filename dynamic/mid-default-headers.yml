@@ -2,7 +2,6 @@ http:
   middlewares:
     mid-default-headers:
       headers:
-        frameDeny: true
         contentTypeNosniff: true
         forceSTSHeader: true
         stsIncludeSubdomains: true
