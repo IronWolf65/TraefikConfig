@@ -14,4 +14,3 @@ http:
         serversTransport: insecure
         servers:
           - url: "https://192.168.88.2:8006"
-        passHostHeader: true
