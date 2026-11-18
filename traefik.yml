@@ -55,16 +55,18 @@ certificatesResolvers:
           - "8.8.8.8:53"
           - "9.9.9.9:53"
 
-log:
-    level: "INFO"
-    filePath: "/var/log/traefik/traefik.log"
-    noColor: false
-    maxSize: 100
-    compress: true
-
-accessLog:
-    addInternals: true
-    filePath: "/var/log/traefik/access.log"
-    bufferingSize: 100
+# Файловые логи выключены. Без блока log Traefik пишет в stdout только ERR (journald сам ротирует),
+# access-лог не пишется вовсе. Раскомментировать блоки ниже, чтобы вернуть файлы в ./log.
+# log:
+#     level: "INFO"
+#     filePath: "/var/log/traefik/traefik.log"
+#     noColor: false
+#     maxSize: 100
+#     compress: true
+#
+# accessLog:
+#     addInternals: true
+#     filePath: "/var/log/traefik/access.log"
+#     bufferingSize: 100
 
 

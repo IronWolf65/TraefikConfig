@@ -16,4 +16,4 @@ services:
         source: ./acme.json
         target: /etc/traefik/acme.json
       - "./dynamic:/etc/traefik/dynamic:ro"
-      - "./log:/var/log/traefik"
+      # - "./log:/var/log/traefik"   # logs off, см. traefik.yml
