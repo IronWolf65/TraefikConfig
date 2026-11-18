@@ -28,12 +28,17 @@ entryPoints:
             sans:
               - "*.ironwolf65.duckdns.org"
         # options: strict_tls@file
+  ping:
+    address: ":8080"
 #   metrics:
 #     address: ":8082"
 
 # metrics:
 #   prometheus:
 #     entryPoint: metrics
+
+ping:
+  entryPoint: ping
 
 providers:
   file:
