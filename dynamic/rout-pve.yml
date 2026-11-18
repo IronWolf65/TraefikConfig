@@ -1,8 +1,6 @@
 http:
   routers:
     pve:
-      entryPoints:
-        - websecure
       rule: "Host(`pve.ironwolf65.duckdns.org`)"
       service: pve
       middlewares:

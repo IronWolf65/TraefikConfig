@@ -1,8 +1,6 @@
 http:
   routers:
     ntfy:
-      entryPoints:
-        - websecure
       rule: "Host(`ntfy.ironwolf65.duckdns.org`)"
       service: ntfy
       middlewares:

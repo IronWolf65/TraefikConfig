@@ -1,8 +1,6 @@
 http:
   routers:
     immich:
-      entryPoints:
-        - websecure
       rule: "Host(`immich.ironwolf65.duckdns.org`)"
       service: immich
       middlewares:

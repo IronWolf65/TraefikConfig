@@ -1,8 +1,6 @@
 http:
   routers:
     dashboard:
-      entryPoints:
-        - websecure
       rule: Host(`traefik.ironwolf65.duckdns.org`) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))
       service: api@internal
       middlewares:
@@ -10,8 +8,6 @@ http:
         - mid-authentik
       priority: 10
     dashboard-manifest:
-      entryPoints:
-        - websecure
       rule: Host(`traefik.ironwolf65.duckdns.org`) && Path(`/dashboard/manifest.json`)
       service: api@internal
       priority: 20

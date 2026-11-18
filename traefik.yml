@@ -15,7 +15,7 @@ entryPoints:
           scheme: https
   websecure:
     address: ":443"
-    asDefault: true
+    asDefault: true   # на этот флаг полагаются все роутеры без entryPoints
     transport:                #this fix upload video for immich   
       respondingTimeouts:     #this fix upload video for immich   
         readTimeout: 600s     #this fix upload video for immich   

@@ -1,8 +1,6 @@
 http:
   routers:
     authentik:
-      entryPoints:
-        - websecure
       rule: "Host(`auth.ironwolf65.duckdns.org`)"
       service: authentik
       middlewares:

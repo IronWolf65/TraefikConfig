@@ -1,8 +1,6 @@
 http:
   routers:
     syncthing:
-      entryPoints:
-        - websecure
       rule: "Host(`syncthing.ironwolf65.duckdns.org`)"
       service: syncthing
       middlewares:

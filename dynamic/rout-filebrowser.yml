@@ -1,8 +1,6 @@
 http:
   routers:
     filebrowser:
-      entryPoints:
-        - websecure
       rule: "Host(`fb.ironwolf65.duckdns.org`)"
       service: filebrowser
       middlewares:

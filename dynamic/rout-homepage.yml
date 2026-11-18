@@ -1,8 +1,6 @@
 http:
   routers:
     homepage:
-      entryPoints:
-        - websecure
       rule: "Host(`homepage.ironwolf65.duckdns.org`)"
       service: homepage
       middlewares:

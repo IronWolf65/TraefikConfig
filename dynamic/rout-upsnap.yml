@@ -1,8 +1,6 @@
 http:
   routers:
     upsnap:
-      entryPoints:
-        - websecure
       rule: "Host(`upsnap.ironwolf65.duckdns.org`)"
       service: upsnap
       middlewares:
