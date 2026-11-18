@@ -3,7 +3,6 @@ http:
     mid-default-headers:
       headers:
         contentTypeNosniff: true
-        forceSTSHeader: true
         stsIncludeSubdomains: true
         stsPreload: true
         stsSeconds: 31536000
