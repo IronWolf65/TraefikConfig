@@ -5,7 +5,6 @@ http:
       service: qbittorrent
       middlewares:
         - mid-default-headers
-        - mid-https-redirect
   services:
     qbittorrent:
       loadBalancer:
